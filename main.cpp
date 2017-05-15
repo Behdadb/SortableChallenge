@@ -64,6 +64,7 @@ pair < pair<string,string >, vector <string> > token(string s){
 	return make_pair(make_pair(name,manu), r);
 }
 
+// masks keywords of each listing or product into 13 long long ints
 vector <long long> mask(vector <string> v){
 	vector <long long> r;
 	for(int i=0;i<= (int)(dictionary.size()/64) ;i++){
@@ -78,6 +79,7 @@ vector <long long> mask(vector <string> v){
 	return r;
 }
 
+//matches masks and finds the best product matching the mask which has the manufacturere of manu
 string matchMask (string manu, vector <long long> v){
 	priority_queue <pair <double, string> > q;
 
@@ -143,7 +145,7 @@ int main(){
 	seprator.insert('/');
 
 	string s;
-	while(getline(fin, s)){
+	while(getline(fin, s)){		//reading products file
 		
 		pair<pair <string,string> , vector <string> > p = token(s);
 
@@ -179,7 +181,7 @@ int main(){
 	//int hit = 0;
 	int cou2 = 0;
 
-	while(getline(fin2, s)){
+	while(getline(fin2, s)){	//reading listings and matching
 		cou2++;
 		pair<pair<string,string> , vector <string> > p = token(s);
 		vector <string> query;
